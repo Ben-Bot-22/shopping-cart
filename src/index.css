@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 :root {
-  font-family: 'Syncopate', sans-serif;
+  font-family: 'Merienda', cursive;
   @apply bg-third;
 }

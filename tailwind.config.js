@@ -10,9 +10,10 @@ module.exports = {
         first: '#F2789F',
         second: '#F999B7',
         third: '#F9C5D5',
-        fourth: '#FEE3EC'
+        fourth: '#FEE3EC',
+        accent: '#DB1B99'
       }
     }
   },
-  plugins: []
+  plugins: [require('prettier-plugin-tailwindcss')]
 }
