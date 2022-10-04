@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 
 function Nav() {
   return (
-    <nav className="flex h-16 items-center justify-between pr-6 text-2xl font-bold">
+    <nav className="flex h-12 items-center justify-between pr-6 text-2xl font-bold bg-first">
       <Link
-        className="text-accent justify-self-start pl-6 hover:underline"
+        className="text-white justify-self-start pl-6 hover:underline"
         to="/"
       >
         Home
       </Link>
-      <ul className="text-accent flex space-x-10">
+      <ul className="text-white flex space-x-10">
         {/* <li className="list-none"></li> */}
         <li className="list-none hover:underline">
           <Link to="/shop">Shop</Link>

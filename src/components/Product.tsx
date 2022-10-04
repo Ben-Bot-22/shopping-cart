@@ -21,12 +21,9 @@ function Product() {
             {location.state.text}
           </h1>
           <h1 className="text-accent text-2xl">{location.state.price}</h1>
-          <Link
-            className="bg-accent text-bold flex h-8 w-44 items-center justify-center rounded-md text-xl text-white"
-            to="/cart"
-          >
+          <button className="bg-accent text-bold flex h-8 w-44 items-center justify-center rounded-md text-xl text-white">
             <span>Add to Cart</span>
-          </Link>
+          </button>
           <Link
             className="text-bold text-accent border-accent flex h-8 w-44 items-center justify-center rounded-md border-2 text-xl"
             to="/cart"

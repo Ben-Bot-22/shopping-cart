@@ -23,20 +23,17 @@ function App() {
 export default App
 
 /*
-- shopping cart page
--- list of items (cards, image, price, quantity)
--- quantity: 
---- up / down
---- input field: manually type
--- proceed to payment
--- back to shop
-
 INTERACTIVE
 - navigation bar: number of items in cart
 - product page: view in cart (only if product is in cart)
 - shopping cart: number of items in cart
 -- up / down
 -- input field: manually type
+- cart
+-- update quantity
+-- manually type quantity in input field
+-- pay now
+-- update total price
 
 - watch testing and build tests
 -- Setup tests with React Testing Library
