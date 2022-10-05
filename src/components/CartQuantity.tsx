@@ -8,7 +8,7 @@ function CartQuantity() {
           -
         </button>
         <input
-          className="border-accent w-12 rounded border-2"
+          className="border-accent w-12 rounded border-2 text-center"
           type="number"
         ></input>
         <button className="bg-accent text-white rounded-full w-6 h-6">+</button>
