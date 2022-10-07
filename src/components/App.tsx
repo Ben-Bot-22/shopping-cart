@@ -8,27 +8,10 @@ import Product from './Product'
 import { v4 as uuidv4 } from 'uuid'
 import { cartItemData } from '../utils/types'
 
-// // function addToCart(
-// //   id: string,
-// //   name: string,
-// //   price: number,
-// //   quantity: number,
-// //   src: string
-// // ): void {
-// //   // find item
-// //   const item = cartItems.find((item) => item.id === id)
-// //   // if entry exists, update quantity
-// //   if (item) {
-// //     // update quantity
-// //     updateQuantity(id, item.quantity + quantity)
-// //   } else {
-// //     // else, add entry
-// //     addNewItem(name, price, quantity, src)
-// //   }
-// // }
-
 function App() {
-  const [cartItems, setCartItems] = useState(cartItemData)
+  const [cartItems, setCartItems] = useState([] as typeof cartItemData)
+  const [cartQuantity, setCartQuantity] = useState(0)
+  const [cartTotal, setCartTotal] = useState(0)
 
   const updateQuantity = (id: string, quantity: number) => {
     const newCartItems = cartItems.map((item) => {
@@ -38,6 +21,24 @@ function App() {
       return item
     })
     setCartItems(newCartItems)
+    calcQuantity()
+    calcTotal()
+  }
+
+  const calcTotal = () => {
+    let total = 0
+    cartItems.forEach((item) => {
+      total += item.price * item.quantity
+    })
+    setCartTotal(total)
+  }
+
+  const calcQuantity = () => {
+    let total = 0
+    cartItems.forEach((item) => {
+      total += item.quantity
+    })
+    setCartQuantity(total)
   }
 
   const addNewItem = (
@@ -46,21 +47,31 @@ function App() {
     quantity: number,
     src: string
   ) => {
+    // find if item is already in cart
     const newCartItems = [
       ...cartItems,
       { id: uuidv4(), name, price, quantity, imageSource: src }
     ]
+    const itemInCart = cartItems.find((item) => item.name === name)
+    if (itemInCart) {
+      updateQuantity(itemInCart.id, itemInCart.quantity + quantity)
+      return
+    }
     setCartItems(newCartItems)
+    calcQuantity()
+    calcTotal()
   }
 
   const removeFromCart = (id: string) => {
     // remove from cart
     setCartItems(cartItems.filter((item) => item.id !== id))
+    calcQuantity()
+    calcTotal()
   }
 
   return (
     <div>
-      <Nav />
+      <Nav cartQuantity={cartQuantity} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
@@ -72,6 +83,7 @@ function App() {
               updateQuantity={updateQuantity}
               addNewItem={addNewItem}
               removeFromCart={removeFromCart}
+              cartTotal={cartTotal}
             />
           }
         />
@@ -83,6 +95,7 @@ function App() {
               updateQuantity={updateQuantity}
               addNewItem={addNewItem}
               removeFromCart={removeFromCart}
+              cartQuantity={cartQuantity}
             />
           }
         />
@@ -95,26 +108,20 @@ function App() {
 export default App
 
 /*
-git hub commit
-Fix mismatch tailwind ordering in config
 
-INTERACTIVE
+**CART PAGE**
 
-- shopping cart: number of items in cart
--- up / down
--- input field: manually type
+Fix nav bar (qty in cart)
+- shows (1) when item removed
+- after pressing Add to cart, qty in cart doesn't update
 
-- navigation bar: number of items in cart
+- update quantity: up / down
+- manually type quantity in input field
 
-- cart
--- update quantity
--- manually type quantity in input field
--- pay now
--- update total price
+- pay now button (if cart is not empty)
 
-- product page: view in cart (only if product is in cart)
+**TESTING**
 
-TESTING
 Unit test
 - item: quantity up / down
 - item: remove

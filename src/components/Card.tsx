@@ -1,16 +1,15 @@
-import react from 'react'
 import { Link } from 'react-router-dom'
 
-function Card({ source, text, price }: Props) {
+function Card({ source, name, price }: Props) {
   return (
-    <Link to="/product" state={{ source, text, price }}>
-      <div className="bg-accent bold border-accent flex h-80 w-52 flex-col items-center rounded-lg border-4 text-white shadow-black drop-shadow-md hover:border-white">
+    <Link to="/product" state={{ source, name, price }}>
+      <div className="bold flex h-80 w-52 flex-col items-center rounded-lg border-4 border-accent bg-accent text-white shadow-black drop-shadow-md hover:border-white">
         <img
           src={source}
-          alt={text}
+          alt={name}
           className="h-64 w-52 rounded-t object-fill"
         ></img>
-        <h1>{text}</h1>
+        <h1>{name}</h1>
         <h2>{price}</h2>
       </div>
     </Link>
@@ -19,7 +18,7 @@ function Card({ source, text, price }: Props) {
 
 type Props = {
   source: string
-  text: string
+  name: string
   price: string
 }
 

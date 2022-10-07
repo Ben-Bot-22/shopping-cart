@@ -8,11 +8,11 @@ function Home() {
         <img
           src="/src/assets/catHero.jpg"
           alt="cat walking next to bay"
-          className="w-px-600 border-first h-auto border-4"
+          className="w-px-600 h-auto border-4 border-first"
         ></img>
         <Link
           to="/shop"
-          className="bg-accent absolute top-[50%] flex h-11 w-40 items-center justify-center rounded-3xl border-4 text-xl text-white"
+          className="absolute top-[50%] flex h-11 w-40 items-center justify-center rounded-3xl border-4 bg-accent text-xl text-white"
         >
           <div>Shop Now</div>
         </Link>

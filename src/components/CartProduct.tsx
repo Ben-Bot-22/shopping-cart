@@ -1,18 +1,47 @@
 import react from 'react'
 import CartQuantity from './CartQuantity'
+import {
+  cartItemData,
+  updateQuantity,
+  addNewItem,
+  removeFromCart
+} from '../utils/types'
 
-function CartProduct() {
+type Props = {
+  // cartItems: typeof cartItemData
+  updateQuantity: updateQuantity
+  removeFromCart: removeFromCart
+  id: string
+  name: string
+  price: number
+  quantity: number
+  src: string
+}
+
+function CartProduct({
+  updateQuantity,
+  removeFromCart,
+  id,
+  name,
+  price,
+  quantity,
+  src
+}: Props) {
   return (
     <div className="m-3 flex items-center gap-4">
       <img
-        src="/src/assets/cat1.jpg"
+        src={src}
         alt="cat"
-        className="border-accent h-36 rounded border-2 object-fill"
+        className="h-36 w-28 rounded border-2 border-accent object-fill"
       ></img>
-      <div className="text-accent flex flex-col gap-2 items-center">
-        <h1>Sonny</h1>
-        <h2>$49.99</h2>
-        <CartQuantity />
+      <div className="flex flex-col items-center gap-2 text-accent">
+        <h1>{name}</h1>
+        <h2>{price}</h2>
+        <CartQuantity
+          quantity={quantity}
+          removeFromCart={removeFromCart}
+          id={id}
+        />
       </div>
     </div>
   )
