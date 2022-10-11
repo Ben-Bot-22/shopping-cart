@@ -11,7 +11,7 @@ import { cartItemData } from '../utils/types'
 function App() {
   const [cartItems, setCartItems] = useState([] as typeof cartItemData)
   const [cartQuantity, setCartQuantity] = useState(0)
-  const [cartTotal, setCartTotal] = useState(0)
+  const [cartTotal, setCartTotalPrice] = useState(0)
 
   const updateQuantity = (id: string, quantity: number) => {
     const newCartItems = cartItems.map((item) => {
@@ -20,22 +20,27 @@ function App() {
       }
       return item
     })
-    setCartItems(newCartItems)
-    calcQuantity()
-    calcTotal()
+    setCartItems([...newCartItems])
+    calcQuantity(newCartItems)
+    calcTotalPrice(newCartItems)
   }
 
-  const calcTotal = () => {
+  const calcTotalPrice = (newCartItems: typeof cartItemData) => {
     let total = 0
-    cartItems.forEach((item) => {
+    console.log('**calc total price**')
+    newCartItems.forEach((item) => {
+      console.log({ price: item.price, quantity: item.quantity })
+      console.log(item.price * item.quantity)
       total += item.price * item.quantity
     })
-    setCartTotal(total)
+    setCartTotalPrice(total)
+    console.log('total price: ', total)
   }
 
-  const calcQuantity = () => {
+  const calcQuantity = (newCartItems: typeof cartItemData) => {
     let total = 0
-    cartItems.forEach((item) => {
+    newCartItems.forEach((item) => {
+      console.log(item)
       total += item.quantity
     })
     setCartQuantity(total)
@@ -47,26 +52,29 @@ function App() {
     quantity: number,
     src: string
   ) => {
-    // find if item is already in cart
-    const newCartItems = [
-      ...cartItems,
-      { id: uuidv4(), name, price, quantity, imageSource: src }
-    ]
-    const itemInCart = cartItems.find((item) => item.name === name)
-    if (itemInCart) {
-      updateQuantity(itemInCart.id, itemInCart.quantity + quantity)
-      return
+    // check if item already exists in cart
+    const itemExists = cartItems.find((item) => item.name === name)
+    if (itemExists) {
+      // if item exists, update quantity
+      updateQuantity(itemExists.id, itemExists.quantity + quantity)
+    } else {
+      // add new item
+      const newCartItems = [
+        ...cartItems,
+        { id: uuidv4(), name, price, quantity, imageSource: src }
+      ]
+      setCartItems(newCartItems)
+      calcQuantity(newCartItems)
+      calcTotalPrice(newCartItems)
     }
-    setCartItems(newCartItems)
-    calcQuantity()
-    calcTotal()
   }
 
   const removeFromCart = (id: string) => {
     // remove from cart
-    setCartItems(cartItems.filter((item) => item.id !== id))
-    calcQuantity()
-    calcTotal()
+    const newCartItems = cartItems.filter((item) => item.id !== id)
+    setCartItems([...newCartItems])
+    calcQuantity(newCartItems)
+    calcTotalPrice(newCartItems)
   }
 
   return (
@@ -111,22 +119,16 @@ export default App
 
 **CART PAGE**
 
-Fix nav bar (qty in cart)
-- shows (1) when item removed
-- after pressing Add to cart, qty in cart doesn't update
-
 - update quantity: up / down
+
 - manually type quantity in input field
 
 - pay now button (if cart is not empty)
 
-**TESTING**
+**React Testing Library**
+- snapshot test
+- screen test
+- Add to cart update nav bar quantity
+- remove from cart update nav bar quantity
 
-Unit test
-- item: quantity up / down
-- item: remove
-
-- Setup tests with React Testing Library
--- snapshot
--- screen
 */

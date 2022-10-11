@@ -40,10 +40,10 @@ function Cart({
           <span>Cart</span>
         </h1>
         <div className="flex flex-col">{cartList}</div>
-        {isNaN(cartTotal) ? (
+        {isNaN(cartTotal) || cartTotal === 0 ? (
           <h1 className="m-2 text-xl text-accent">Such empty!</h1>
         ) : (
-          <h1 className="m-2 text-xl text-accent">Total: {cartTotal}</h1>
+          <h1 className="m-2 text-xl text-accent">Total: ${cartTotal}</h1>
         )}
       </div>
     </div>

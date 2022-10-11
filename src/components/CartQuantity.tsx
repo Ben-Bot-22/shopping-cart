@@ -15,7 +15,11 @@ function CartQuantity({ quantity, removeFromCart, id }: Props) {
         <button className="h-6 w-6 rounded-full border-2 border-accent text-accent">
           -
         </button>
-        <input className={newLocal} type="number" value={quantity}></input>
+        <input
+          className={newLocal}
+          type="number"
+          defaultValue={quantity}
+        ></input>
         <button className="h-6 w-6 rounded-full bg-accent text-white">+</button>
       </div>
       <button

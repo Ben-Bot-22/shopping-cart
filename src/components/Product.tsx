@@ -26,7 +26,7 @@ function Product({
   const location = useLocation()
   return (
     <div className="mt-4 flex justify-center">
-      <div className="flex h-full items-center justify-between rounded-xl border-4 border-accent bg-white ">
+      <div className="flex h-full items-center justify-between rounded-xl border-4 border-accent bg-white shadow-lg shadow-zinc-500">
         <img
           src={location.state.source}
           alt={location.state.text}
@@ -36,9 +36,9 @@ function Product({
           <h1 className="text-2xl font-bold text-accent">
             {location.state.name}
           </h1>
-          <h1 className="text-2xl text-accent">{location.state.price}</h1>
+          <h1 className="text-2xl text-accent">${location.state.price}</h1>
           <button
-            className="text-bold flex h-8 w-44 items-center justify-center rounded-md bg-accent text-xl text-white"
+            className="text-bold flex h-8 w-44 items-center justify-center rounded-md bg-accent text-xl text-white shadow-md shadow-zinc-400"
             onClick={() =>
               addNewItem(
                 location.state.name,

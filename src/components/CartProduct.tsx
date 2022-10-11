@@ -36,7 +36,7 @@ function CartProduct({
       ></img>
       <div className="flex flex-col items-center gap-2 text-accent">
         <h1>{name}</h1>
-        <h2>{price}</h2>
+        <h2>${price}</h2>
         <CartQuantity
           quantity={quantity}
           removeFromCart={removeFromCart}
