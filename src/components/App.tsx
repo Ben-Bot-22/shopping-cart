@@ -27,20 +27,16 @@ function App() {
 
   const calcTotalPrice = (newCartItems: typeof cartItemData) => {
     let total = 0
-    console.log('**calc total price**')
     newCartItems.forEach((item) => {
-      console.log({ price: item.price, quantity: item.quantity })
-      console.log(item.price * item.quantity)
       total += item.price * item.quantity
     })
+    total = Math.round(total * 100) / 100
     setCartTotalPrice(total)
-    console.log('total price: ', total)
   }
 
   const calcQuantity = (newCartItems: typeof cartItemData) => {
     let total = 0
     newCartItems.forEach((item) => {
-      console.log(item)
       total += item.quantity
     })
     setCartQuantity(total)
@@ -117,17 +113,9 @@ export default App
 
 /*
 
-**CART PAGE**
-
-- update quantity: up / down
-
-- manually type quantity in input field
-
-- pay now button (if cart is not empty)
-
 **React Testing Library**
-- snapshot test
-- screen test
+- snapshot test x2
+- screen test x2
 - Add to cart update nav bar quantity
 - remove from cart update nav bar quantity
 

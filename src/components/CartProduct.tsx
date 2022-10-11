@@ -35,12 +35,13 @@ function CartProduct({
         className="h-36 w-28 rounded border-2 border-accent object-fill"
       ></img>
       <div className="flex flex-col items-center gap-2 text-accent">
-        <h1>{name}</h1>
+        <h1 className="bold text-lg">{name}</h1>
         <h2>${price}</h2>
         <CartQuantity
+          id={id}
           quantity={quantity}
           removeFromCart={removeFromCart}
-          id={id}
+          updateQuantity={updateQuantity}
         />
       </div>
     </div>
