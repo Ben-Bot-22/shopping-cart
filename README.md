@@ -13,3 +13,4 @@ It was built with the following technologies:
 - Prettier
 
 The code is located [here](https://github.com/Ben-Bot-22/shopping-cart).
+Live Preview is [here](https://fantastic-dolphin-0f02fc.netlify.app/)

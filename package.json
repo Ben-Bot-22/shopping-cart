@@ -3,7 +3,7 @@
   "description": "Odin project to learn react router & snapshot testing",
   "homepage": "http://Ben-Bot-22.github.io/shopping-cart",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
