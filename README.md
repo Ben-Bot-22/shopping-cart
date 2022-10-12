@@ -1,72 +1,15 @@
-# React Tailwindcss Boilerplate build with Vite
+# Shopping Cart
 
-This is a [ReactJS](https://reactjs.org) + [Vite](https://vitejs.dev) boilerplate to be used with [Tailwindcss](https://tailwindcss.com).
+This app is part of the [Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-shopping-cart) curriculum to learn react & react router.
 
-## What is inside?
+It was built with the following technologies:
 
-This project uses many tools like:
+- Vite
+- TypeScript
+- Tailwind CSS
+- React
+- React router
+- Jest
+- Prettier
 
-- [ReactJS](https://reactjs.org)
-- [Vite](https://vitejs.dev)
-- [TypeScript](https://www.typescriptlang.org)
-- [Jest](https://jestjs.io)
-- [Testing Library](https://testing-library.com)
-- [Tailwindcss](https://tailwindcss.com)
-- [Eslint](https://eslint.org)
-- [Prettier](https://prettier.io)
-
-## Getting Started
-
-### Install
-
-Create the project.
-
-```bash
-npx degit joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate my-app
-```
-
-Access the project directory.
-
-```bash
-cd my-app
-```
-
-Install dependencies.
-
-```bash
-pnpm install
-```
-
-Serve with hot reload at <http://localhost:5173>.
-
-```bash
-pnpm run dev
-```
-
-### Lint
-
-```bash
-pnpm run lint
-```
-
-### Typecheck
-
-```bash
-pnpm run typecheck
-```
-
-### Build
-
-```bash
-pnpm run build
-```
-
-### Test
-
-```bash
-pnpm run test
-```
-
-## License
-
-This project is licensed under the MIT License.
+The code is located [here](https://github.com/Ben-Bot-22/shopping-cart).
