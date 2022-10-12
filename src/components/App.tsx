@@ -85,7 +85,6 @@ function App() {
             <Cart
               cartItems={cartItems}
               updateQuantity={updateQuantity}
-              addNewItem={addNewItem}
               removeFromCart={removeFromCart}
               cartTotal={cartTotal}
             />
@@ -94,13 +93,7 @@ function App() {
         <Route
           path="/product"
           element={
-            <Product
-              cartItems={cartItems}
-              updateQuantity={updateQuantity}
-              addNewItem={addNewItem}
-              removeFromCart={removeFromCart}
-              cartQuantity={cartQuantity}
-            />
+            <Product addNewItem={addNewItem} cartQuantity={cartQuantity} />
           }
         />
         <Route path="*" element={<h1>404 Not Found</h1>} />
@@ -110,13 +103,3 @@ function App() {
 }
 
 export default App
-
-/*
-
-**React Testing Library**
-- snapshot test x2
-- screen test x2
-- Add to cart update nav bar quantity
-- remove from cart update nav bar quantity
-
-*/

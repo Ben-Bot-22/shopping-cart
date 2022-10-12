@@ -1,26 +1,15 @@
 import CartProduct from './CartProduct'
-import {
-  cartItemData,
-  updateQuantity,
-  addNewItem,
-  removeFromCart
-} from '../utils/types'
+import { cartItemData, updateQuantity, removeFromCart } from '../utils/types'
 
 type Props = {
   cartItems: typeof cartItemData
   updateQuantity: updateQuantity
-  addNewItem: addNewItem
+  // addNewItem: addNewItem
   removeFromCart: removeFromCart
   cartTotal: number
 }
 
-function Cart({
-  cartItems,
-  updateQuantity,
-  addNewItem,
-  removeFromCart,
-  cartTotal
-}: Props) {
+function Cart({ cartItems, updateQuantity, removeFromCart, cartTotal }: Props) {
   const cartList = cartItems.map((item) => (
     <CartProduct
       key={item.id}

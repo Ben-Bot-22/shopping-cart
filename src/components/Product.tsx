@@ -1,28 +1,16 @@
-import { debug } from 'console'
 import react from 'react'
 import { useLocation, Link } from 'react-router-dom'
-import {
-  cartItemData,
-  updateQuantity,
-  addNewItem,
-  removeFromCart
-} from '../utils/types'
+import { addNewItem } from '../utils/types'
 
 type Props = {
-  cartItems: typeof cartItemData
-  updateQuantity: updateQuantity
+  // cartItems: typeof cartItemData
+  // updateQuantity: updateQuantity
   addNewItem: addNewItem
-  removeFromCart: removeFromCart
+  // removeFromCart: removeFromCart
   cartQuantity: number
 }
 
-function Product({
-  cartItems,
-  updateQuantity,
-  addNewItem,
-  removeFromCart,
-  cartQuantity
-}: Props) {
+function Product({ addNewItem, cartQuantity }: Props) {
   const location = useLocation()
   return (
     <div className="mt-4 flex justify-center">
