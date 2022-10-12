@@ -1,5 +1,11 @@
 import { Link } from 'react-router-dom'
 
+type Props = {
+  source: string
+  name: string
+  price: number
+}
+
 function Card({ source, name, price }: Props) {
   return (
     <Link to="/product" state={{ source, name, price }}>
@@ -14,12 +20,6 @@ function Card({ source, name, price }: Props) {
       </div>
     </Link>
   )
-}
-
-type Props = {
-  source: string
-  name: string
-  price: number
 }
 
 export default Card

@@ -3,10 +3,7 @@ import { useLocation, Link } from 'react-router-dom'
 import { addNewItem } from '../utils/types'
 
 type Props = {
-  // cartItems: typeof cartItemData
-  // updateQuantity: updateQuantity
   addNewItem: addNewItem
-  // removeFromCart: removeFromCart
   cartQuantity: number
 }
 

@@ -13,6 +13,7 @@ function Home() {
         <Link
           to="/shop"
           className="absolute top-[50%] flex h-11 w-40 items-center justify-center rounded-3xl border-4 bg-accent text-xl text-white"
+          data-testid="shop-button"
         >
           <div>Shop Now</div>
         </Link>

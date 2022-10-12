@@ -2,24 +2,23 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom' // optional
 import userEvent from '@testing-library/user-event'
-// import TestComponent from 'path-to-test-component'
 import App from './App'
 import Product from './Product'
 import Home from './Home'
 import Card from './Card'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 
 /*
 TODO:
 
-[] screen test
-[] snapshot test
-
 ** TESTS **
 
+Add to cart button works
+
 SHOP
-- adding cats to cart; cart has cats
 - add to cart adds view in cart button
+- adding cats to cart; cart has cats
 
 NAVBAR
 - add to cart updates nav bar quantity
@@ -32,7 +31,7 @@ CART
 
 */
 
-const MockHome = () => {
+const MockApp = () => {
   return (
     <BrowserRouter>
       <Home />
@@ -41,15 +40,24 @@ const MockHome = () => {
 }
 
 describe('Add to cart button populates cart screen', () => {
-  it('view cart button appears after adding to cart', () => {
-    render(<MockHome />)
-    const shopNowButton = screen.getByRole('link', { name: /shop now/i })
-    userEvent.click(shopNowButton)
-    const catButton = screen.getByRole('Card', { name: /Sonny/i })
-    userEvent.click(catButton)
-    const addToCartButton = screen.getByRole('button', { name: /add to cart/i })
-    userEvent.click(addToCartButton)
-    const viewCartButton = screen.getByRole('link', { name: /view in cart/i })
-    expect(viewCartButton).toBeInTheDocument()
+  it('renders shop now button', async () => {
+    render(<MockApp />)
+    const shopNowButton = screen.getByRole('link', { name: /Shop Now/i })
+    expect(shopNowButton).toBeInTheDocument()
   })
+
+  it('renders correctly', () => {
+    const snap = render(<MockApp />)
+    expect(snap).toMatchSnapshot()
+  })
+  // it('renders view in cart button', async () => {
+  //   render(<MockApp />)
+  //   const shopNowButton = screen.getByRole('link', { name: /Shop Now/i })
+  //   userEvent.click(shopNowButton)
+  //   screen.debug()
+  //   const addToCartButton = screen.getByRole('button', { name: /Add to Cart/i })
+  //   userEvent.click(addToCartButton)
+  //   const viewCartButton = screen.getByRole('button', { name: /View in Cart/i })
+  //   expect(viewCartButton).toBeInTheDocument()
+  // })
 })
